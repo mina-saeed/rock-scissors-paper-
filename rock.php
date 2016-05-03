@@ -5,7 +5,8 @@ $rules = mysqli_query($con,$myQuery) or die($myQuery."<br/><br/>".mysql_error())
 session_start();
 $_SESSION['userScore']=0;
 $_SESSION['aiScore']=0;
-game();
+//game();
+prediction();
 function getRules($userInput,$aiInput,$result)
 {
 	if($result=="ai")
@@ -16,6 +17,13 @@ function getRules($userInput,$aiInput,$result)
 	{
 		canBeat($userInput,$aiInput);
 	}
+}
+function prediction()
+{
+
+	$query="SELECT * FROM `game` ORDER BY id DESC";
+	$data=mysqli_query($con,$query);
+	
 }
 function canBeat($input1,$input2)
 {
